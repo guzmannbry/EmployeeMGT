@@ -13,13 +13,21 @@
     <div class="form-container">
       <h1>Manage Employee</h1>
       <div class="form">
-        <input type="text" id="name" placeholder="Name" required />
-        <input type="text" id="lname" placeholder="Lastname" required />
-        <input type="number" id="age" placeholder="Age"  required />
-        <input type="date" class="form-control" id="bdate" placeholder="Birthdate" required />
-        <input type="number" id="phone" placeholder="Phone" required />
+        Firstname
+        <input type="text" id="name"  required />
+        Lastname
+        <input type="text" id="lname"  required />
+        Age
+        <input type="number" id="age" "  required />
+        Birth Date<br/><br/>
+        <input type="date" class="form-control" id="bdate" placeholder="Birthdate" required /><br/>
+        <br/>Phone
+        <input type="number" id="phone" required />
+       Hours Work <input type="number" id="hours_worked" required />
+        Rate Pay <input type="number" id="rate_pay" required />
+        Overtime Rate <input type="number" id="overtime_rate" value="0" required />
         <input type="button" value="Save" id="btnSave" />
-        <input type="button" value="Refresh Form" id="btnRefresh" />
+        <input type="button" value="Cancel" id="btnRefresh" />
       </div>
     </div>
     <div class="table-container"> 
@@ -31,13 +39,37 @@
             <th>Age</th>
             <th>Phone</th>
             <th>BirthDate</th>
+            <th>Hours Worked</th>
+            <th>Rate Pay</th>
+            <th>Regular Pay</th>
+            <th>Overtime Pay</th>
+            <th>OverAll Pay</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
       </table>
     </div>
-    </div>
+    </div><!-- 
+  <script>
+function myFunction() {
+  var search, filter, table, tr, td, 
+  search = document.getElementById("mySearch");
+  filter = search.value.toUpperCase();
+  table = document.getElementById("table1");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script> -->
     <script src="contactTable.js" charset="utf-8"></script>
     <script src="smoothscroll.js" charset="utf-8"></script>
   </body>

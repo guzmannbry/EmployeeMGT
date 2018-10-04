@@ -1,13 +1,17 @@
-;
+
 (function() {
 	'use strict';
 
 	var userData = [{
+
 		name: 'Bryan',
 		lname: 'Guzman',
 		age: '20',	
 		bdate: '2018-10-10',
-		phone: '98455'
+		phone: '98455',
+		hworks: '5',
+		ratepay: '100',
+		overtimepay:'10'
 	}];
 
 	//Update
@@ -31,6 +35,11 @@
 				td4 = document.createElement('td'),
 				td5 = document.createElement('td'),
 				td6 = document.createElement('td'),
+				td7 = document.createElement('td'),
+				td8 = document.createElement('td'),
+				td9 = document.createElement('td'),
+				td10 = document.createElement('td'),
+				td11 = document.createElement('td'),
 				btnDelete = document.createElement('input'),
 				btnEdit = document.createElement('input');
 
@@ -50,14 +59,32 @@
 			tr.appendChild(td4);
 			tr.appendChild(td5);
 			tr.appendChild(td6);
+			tr.appendChild(td7);
+			tr.appendChild(td8);
+			tr.appendChild(td9);
+			tr.appendChild(td10);
+			tr.appendChild(td11);
+
+ 
+ 			var hourswork = userData[i].hworks;
+ 			var ratepay = userData[i].ratepay;
+ 			var ov_p = userData[i].overtimepay;
+
+ 			var rp = hourswork * ratepay;
+ 			var overall_pay = parseFloat(rp) + parseFloat(ov_p);
 
 			td0.innerHTML = i + 1;
 			td1.innerHTML = userData[i].name +' '+userData[i].lname;
 			td2.innerHTML = userData[i].age;
 			td3.innerHTML = userData[i].phone;
 			td4.innerHTML = userData[i].bdate;
-			td5.appendChild(btnEdit);
-			td6.appendChild(btnDelete);
+			td5.innerHTML = '₱' +  hourswork;
+			td6.innerHTML = '₱' +  ratepay;
+			td7.innerHTML = '₱' +  rp;
+			td8.innerHTML = '₱' +  ov_p;
+			td9.innerHTML = '₱' +  overall_pay;
+			td10.appendChild(btnEdit);
+			td11.appendChild(btnDelete);
 
 
 			btnDelete.onclick = (function() {
@@ -94,6 +121,9 @@
 			ageField   = document.getElementById('age'),	
 			bdateField = document.getElementById('bdate'),
 			phoneField = document.getElementById('phone'),
+			hoursworksField = document.getElementById('hours_worked'),
+			ratepayField = document.getElementById('rate_pay'),
+			overtimepayField = document.getElementById('overtime_rate'),
 			saveButton = document.getElementById('btnSave');
 
 		nameField.value = userData[id].name;
@@ -101,23 +131,32 @@
 		ageField.value = userData[id].age;
 		bdateField.value = userData[id].bdate;
 		phoneField.value = userData[id].phone;
+		hoursworksField.value = userData[id].hworks;
+		ratepayField.value = userData[id].ratepay;
+		overtimepayField.value = userData[id].overtimepay;
 		saveButton.value = 'Update';
 		saveButton.setAttribute('data-update', id);
 	}
 
-	// Save new data
+	// Save new datas
 	var saveData = function() {
 		var newName = document.getElementById('name').value,
 			newLname = document.getElementById('lname').value,
 			newAge = document.getElementById('age').value,
 			newBdate = document.getElementById('bdate').value,
 			newPhone = document.getElementById('phone').value,
+			newHoursWork = document.getElementById('hours_worked').value,
+			newRatePay = document.getElementById('rate_pay').value,
+			newOvertimePay = document.getElementById('overtime_rate').value,
 			datatoAdd = {
 				name: newName,
 				lname: newLname,
 				age:newAge,
 				bdate:newBdate,
-				phone: newPhone
+				phone: newPhone,
+				hworks: newHoursWork,
+				ratepay: newRatePay,
+				overtimepay: newOvertimePay
 			};
 
 		userData.push(datatoAdd);
@@ -130,13 +169,19 @@
 		    upLname = document.getElementById('lname').value,
 		    upAge = document.getElementById('age').value,
 			upBdate = document.getElementById('bdate').value,
-			upPhone = document.getElementById('phone').value;
+			upPhone = document.getElementById('phone').value,
+			upHoursWork = document.getElementById('hours_worked').value,
+			upRatePay = document.getElementById('rate_pay').value,
+			upovertimePay = document.getElementById('overtime_rate').value;
 
 		userData[id].name = upName;
 		userData[id].lname = upLname;
 		userData[id].age = upAge;
 		userData[id].bdate = upBdate;
 		userData[id].phone = upPhone;
+		userData[id].hworks = upHoursWork;
+		userData[id].ratepay = upRatePay;
+		userData[id].overtimepay = upovertimePay;
 		updateTable();
 	}
 
@@ -147,6 +192,9 @@
 			ageField = document.getElementById('age'),
 			bdateField = document.getElementById('bdate'),
 			phoneField = document.getElementById('phone'),
+		 	hoursWorkField = document.getElementById('hours_worked'),
+		 	ratePayField = document.getElementById('rate_pay'),
+		 	overtimePayField = document.getElementById('overtime_rate'),
 			saveButton = document.getElementById('btnSave');
 
 		nameField.value = '';
@@ -154,6 +202,9 @@
     	ageField.value = '';
 		bdateField.value = '';
 		phoneField.value = '';
+		hoursWorkField.value = '';
+		ratePayField.value = '';
+		overtimePayField.value = '';
 		saveButton.value = 'Save';
 		saveButton.removeAttribute('data-update');
 	}
@@ -179,5 +230,5 @@
 		};
 	};
 
-	init(); //Intialize the table
+	init();
 })();
